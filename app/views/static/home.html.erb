@@ -1,0 +1,6 @@
+<h1>The Gossipe Project</h1>
+<p>Venez rejoindre le projet car les potins c'est la vie!</p>
+<p> <%=@users.length%> personnes sont déjà inscrit sur notre site </p>
+<%@users.each do |user|%>
+    <p></br> - <%=user.first_name%> de <%=user.city.name%> </p>
+<%end%>

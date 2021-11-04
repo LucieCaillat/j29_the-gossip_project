@@ -1,0 +1,79 @@
+<h1>The Gossip Project</h1>
+<h2>Création d'un compte</h2>
+<p></p>
+
+<form action= "/users" method="POST">
+     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+   
+   
+    <div class="row">
+        <div class="col">
+            <label for="exampleInputEmail1">Prénom *</label>
+            <input type="text" class="form-control" placeholder="Entrez votre prénom" name="first_name">
+        </div>
+        <div class="col">
+            <label for="exampleInputEmail1">Nom de famille *</label>
+            <input type="text" class="form-control" placeholder="Entrez votre nom de famille" name="last_name">
+        </div>
+    </div> 
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Adresse Email *</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre email" name="email">
+        <small id="emailHelp" class="form-text text-muted">Cet email vous servira d'identifiant</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Présentez vous en quelques ligne" name="description"></textarea>
+    </div>
+
+   
+    <div class="row">
+        <div class="col">
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Choisissez une ville *</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="city">
+                <option>AMIENS</option>
+                <option>BORDEAUX</option>
+                <option>LILLE</option>
+                <option>MONPELLIER</option>
+                <option>NANTES</option>
+                <option>NICE</option>
+                <option>PARIS</option>
+                <option>RENNES</option>
+                <option>STRASBOURG</option>
+                <option>TOULOUSE</option>
+                </select>
+            </div>
+
+            <label for="exampleInputEmail1">Votre âge </label>
+            <input type="number" class="form-control" name="age" min="14" max="100">
+
+            
+            <label for="inputPassword" >Mot de passe *</label>                
+            <input type="password" class="form-control" id="inputPassword" placeholder="Créer votre mot de passe" name="password">
+
+            <label for="inputPassword" >Confirmation du mot de passe *</label>                
+            <input type="password" class="form-control" id="inputPassword" placeholder="Confirmer votre mot de passe"name ="password_confirmation">
+                
+            
+
+        </div>
+
+
+        <div class="col">
+        </div>
+
+    </div>
+    <p></br>* Champs obligatoires</p>
+
+    
+    <input type="submit" value="S'inscrire">
+</form>
+
+
+
+
+
