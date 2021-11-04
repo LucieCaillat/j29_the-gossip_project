@@ -8,8 +8,8 @@
 require 'faker'
 
 City.destroy_all
-# User.destroy_all
-# Gossip.destroy_all
+User.destroy_all
+Gossip.destroy_all
 # Tag.destroy_all
 # GossipTag.destroy_all
 #PrivateMessage.destroy_all
@@ -31,15 +31,15 @@ end
 #     puts "#{index} tags créées"
 # end
 
-# 10.times do 
-#     User.create(first_name: Faker::Name.first_name , last_name: Faker::Name.last_name , email: Faker::Internet.email, description: Faker::Lorem.words(number: 5).join(" "), age: Faker::Number.within(range: 16..100),city: City.all[rand(0..9)] )
-#     puts "new user"
-# end
+ 10.times do 
+     User.create(first_name: Faker::Name.first_name , last_name: Faker::Name.last_name , email: Faker::Internet.email, description: Faker::ChuckNorris.fact, age: Faker::Number.within(range: 16..100),city: City.all[rand(0..9)], password: "123")
+     puts "new user"
+ end
 
-# 20.times do 
-#     Gossip.create(content: Faker::Lorem.words(number: 7).join(" "), user: User.all[rand(0..9)], title: Faker::Lorem.words(number: 3).join(" "))
-#     puts "new Gossip"
-# end
+20.times do 
+    Gossip.create(content: Faker::Books::Dune.quote, user: User.all[rand(0..9)], title: Faker::Book.title )
+    puts "new Gossip"
+end
 
 # Gossip.all.each_with_index do |gossip_to_tag, index|
 #     GossipTag.create(gossip: gossip_to_tag, tag: Tag.all[rand(0..9)])

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user = User.new(first_name: params[:first_name], last_name: params[:last_name],email: params[:email], description: params[:description], age: params[:age].to_i, city: City.find_by(name: params[:city]), password: params[:password], password_confirmation: params[:password_confirmation] )
 
     if @user.save
-      redirect_to root_path, notice: "Bienvenue dans The Gossip Project"
+      redirect_to new_session_path, notice: "Bienvenue dans The Gossip Project"
     else
       flash.now[:alert] = "mauvaises entrées de formulaire"
       render :action => 'new'

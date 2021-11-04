@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Salut #{user.first_name} !"
+      redirect_to gossips_path, notice: "Salut #{user.first_name} !"
             
     else
       flash.now[:danger] = 'Invalid email/password combination'

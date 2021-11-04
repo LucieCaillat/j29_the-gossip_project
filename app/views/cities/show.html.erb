@@ -1,0 +1,9 @@
+<h1> <%=@city.zip_code%> - <%=@city.name%>  </h1>
+<p>Voici tous les gossips de <%=@city.name.titleize%> : </p>
+ 
+ <%@city.gossips.each do |gossip|%>
+<p><strong><%=gossip.title%></strong></br>
+    <em>"<%=gossip.content%>"</em></br>
+    De <a href="<%=user_path(gossip.user.id)%>" > <%=gossip.user.first_name%> </a> 
+</p>
+<%end%>

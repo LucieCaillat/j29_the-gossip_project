@@ -12,14 +12,19 @@
 
   <body>
   <!-- Fixed navbar -->
+    
+    
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/">The Gossip Project</a>
+              <nav class="navbar navbar-expand-md  navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="<%=gossips_path%>">The Gossip Project</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link " href="<%=root_path%>">Home</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="<%=team_path%>">La Team</a>
             </li>
@@ -32,7 +37,11 @@
       </nav>
 
     </header>
-    <p></br></p>
+
+
+
+    
+    <p></br></br></p>
     <div>
       <% flash.each do |type, msg| %>
         <% if type == 'notice' %>

@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1> <%=@user.first_name%> <%=@user.last_name%> </h1>
+
+<p><strong>Ville :</strong> <a href="<%=city_path(@user.city.id)%>"> <%=@user.city.name%> </a> </p>
+
+<p><strong>Age :</strong> <%=@user.age%> ans</p>
+
+<p><strong>Description:</strong> <%=@user.description%> </p>
+
+<p><strong>Email :</strong> <%=@user.email%> </p>
+
+<p><strong>Ses gossips :</strong> </p>
+
+
+<%@user.gossips.each do |gossip|%>
+<p><%=gossip.title%></br><em>"<%=gossip.content%>"</em></br></p>
+<%end%>

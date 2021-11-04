@@ -1,5 +1,8 @@
 <h1>The Gossipe Project</h1>
 <p>Venez rejoindre le projet car les potins c'est la vie!</p>
+<button type="button" class="btn btn-outline-primary"> <%= link_to "Se connecter", new_session_path %></button>
+<button type="button" class="btn btn-outline-secondary"><%= link_to "S'inscrire", new_user_path %></button>
+
 <p> <%=@users.length%> personnes sont déjà inscrit sur notre site </p>
 <%@users.each do |user|%>
     <p></br> - <%=user.first_name%> de <%=user.city.name%> </p>

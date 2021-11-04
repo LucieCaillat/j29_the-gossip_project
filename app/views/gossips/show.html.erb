@@ -1,0 +1,12 @@
+<h2> <%=@gossip.title%> </h2>
+<p> <em>"<%=@gossip.content%>" </em> </p>
+<%autor = @gossip.user.first_name + " " + @gossip.user.last_name%>
+<p> <strong>L'auteur :</strong> <%= link_to autor, user_path(@gossip.user.id) %></p>
+
+
+
+
+
+<p><%= link_to 'Editer le potin', edit_gossip_path(@gossip) %> |
+<%= link_to 'Detruire le potin', @gossip, method: :delete, data: { confirm: 'Etes vous sûr?' } %></br>
+</br>|<%= link_to 'Retour', gossips_path %>|</p>
