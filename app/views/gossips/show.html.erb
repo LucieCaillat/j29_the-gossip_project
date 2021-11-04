@@ -15,7 +15,7 @@
 
 <%end%>
 
-<form action= "/gossips/<%=@gossip.id%>/comment"<%=@gossip.id%>" method="PATCH">
+<form action= "/gossips/<%=@gossip.id%>/comments"<%=@gossip.id%>" method="POST">
      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
            
     
