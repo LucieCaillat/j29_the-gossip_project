@@ -10,6 +10,7 @@ require 'faker'
 City.destroy_all
 User.destroy_all
 Gossip.destroy_all
+Comment.destroy_all
 # Tag.destroy_all
 # GossipTag.destroy_all
 #PrivateMessage.destroy_all
@@ -39,6 +40,11 @@ end
 20.times do 
     Gossip.create(content: Faker::Books::Dune.quote, user: User.all[rand(0..9)], title: Faker::Book.title )
     puts "new Gossip"
+end
+
+50.times do 
+    Comment.create(content:Faker::ChuckNorris.fact, user: User.all[rand(0..9)], gossip: Gossip.all[rand(0..19)] )
+    puts "new comment"
 end
 
 # Gossip.all.each_with_index do |gossip_to_tag, index|
