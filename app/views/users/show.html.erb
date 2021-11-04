@@ -14,3 +14,5 @@
 <%@user.gossips.each do |gossip|%>
 <p><%=gossip.title%></br><em>"<%=gossip.content%>"</em></br></p>
 <%end%>
+
+<%= link_to 'Retour à goosip\'s lande', gossips_path %>

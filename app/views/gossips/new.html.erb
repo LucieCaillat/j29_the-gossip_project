@@ -1,5 +1,29 @@
 <h1>New Gossip</h1>
 
-<%= render 'form', gossip: @gossip %>
+<form action= "/gossips" method="POST">
+     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+   
+   
+    
+    <div class="col">
+        <label for="exampleInputEmail1">Titre</label>
+        <input type="text" class="form-control" placeholder="Entrez le titre de votre potin" name="title">
+    </div>
+    
 
-<%= link_to 'Back', gossips_path %>
+    
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">contenu</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="C'est partie le potin!" name="content"></textarea>
+    </div>
+
+   
+   
+          
+
+    
+    <input type="submit" value="Publier">
+</form>
+
+<%= link_to 'Retour', gossips_path %>

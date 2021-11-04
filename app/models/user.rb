@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     belongs_to :city
     has_many :gossips, dependent: :destroy
+    has_many :comments
     has_secure_password
     validates :email, 
         presence: true,

@@ -31,9 +31,11 @@
             <li class="nav-item">
               <a class="nav-link " href="<%=contact_path%>">Contacte</a>
             </li>
+             
           </ul>
           
         </div>
+        <a class="nav-link " href=""><%= link_to "Se déconnecter", session_path(session.id), method: :delete %></a>
       </nav>
 
     </header>

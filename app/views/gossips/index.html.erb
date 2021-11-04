@@ -1,6 +1,6 @@
 <h1>The Gossip Project</h1>
 
-<h3> Envie d'écrire une petit potin ?</h3> 
+<h3> Envie d'écrire une petit potin  <%= User.find_by(id: session[:user_id]).first_name %>?</h3> 
 
 <p></br> <%= link_to 'Faite chauffer le clavier !', new_gossip_path %></br> </p>
 

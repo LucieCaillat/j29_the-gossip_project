@@ -1,5 +1,5 @@
 class GossipsController < ApplicationController
-  before_action :set_gossip, only: %i[ show edit update destroy ]
+  before_action :authenticate_user, only: [:index]
 
   # GET /gossips or /gossips.json
   def index
@@ -8,6 +8,7 @@ class GossipsController < ApplicationController
 
   # GET /gossips/1 or /gossips/1.json
   def show
+    @gossip = Gossip.find(params[:id])
   end
 
   # GET /gossips/new
@@ -17,38 +18,37 @@ class GossipsController < ApplicationController
 
   # GET /gossips/1/edit
   def edit
+    @gossip = Gossip.find(params[:id])
   end
 
   # POST /gossips or /gossips.json
   def create
-    @gossip = Gossip.new(gossip_params)
+    @gossip = Gossip.create(title: params[:title], content: params[:content], user: User.find_by(id: session[:user_id]))  
 
-    respond_to do |format|
-      if @gossip.save
-        format.html { redirect_to @gossip, notice: "Gossip was successfully created." }
-        format.json { render :show, status: :created, location: @gossip }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @gossip.errors, status: :unprocessable_entity }
-      end
+    if @gossip.save
+      redirect_to gossips_path, notice: "Votre nouveau potin a bien été enregistré"
+    else
+      flash.now[:alert] = "mauvaises entrées de formulaire"
+      render :action => 'new'
     end
   end
 
   # PATCH/PUT /gossips/1 or /gossips/1.json
   def update
-    respond_to do |format|
-      if @gossip.update(gossip_params)
-        format.html { redirect_to @gossip, notice: "Gossip was successfully updated." }
-        format.json { render :show, status: :ok, location: @gossip }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @gossip.errors, status: :unprocessable_entity }
-      end
+    gossip = Gossip.find(params[:id])
+    gossip.title = params[:title]
+    gossip.content = params[:content]
+    if gossip.save
+      redirect_to gossips_path, notice: "Le gossip à bien été modifier"
+    else
+      flash.now[:alert] = "mauvaises entrées de formulaire"
+      render :action => 'new'
     end
   end
 
   # DELETE /gossips/1 or /gossips/1.json
   def destroy
+    @gossip = Gossip.find(params[:id])
     @gossip.destroy
     respond_to do |format|
       format.html { redirect_to gossips_url, notice: "Gossip was successfully destroyed." }
@@ -66,4 +66,12 @@ class GossipsController < ApplicationController
     def gossip_params
       params.require(:gossip).permit(:title, :content)
     end
+
+    def authenticate_user
+      unless current_user
+        flash[:danger] = "Please log in."
+        redirect_to new_session_path
+      end
+    end
+    
 end
